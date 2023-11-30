@@ -15,6 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('nome');
         $table->string('email')->unique();
+        $table->foreignId('idUsuario')->constrained('usuarios');
         // Adicione outros campos conforme necessário
         $table->timestamps();
     });

@@ -15,7 +15,7 @@ class PeriodoController extends Controller
         try {
             $periodos = Periodos::all();
 
-            return view('periodos.index', compact('periodos'));
+            return view('periodo.index', compact('periodos'));
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao buscar períodos: ' . $e->getMessage()]);
         }
@@ -38,7 +38,7 @@ class PeriodoController extends Controller
 
     public function create()
     {
-        return view('periodos.create');
+        return view('periodo.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class PeriodoController extends Controller
     {
         try {
             $periodo = Periodos::findOrFail($id);
-            return view('periodos.show', compact('periodo'));
+            return view('periodo.show', compact('periodo'));
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao buscar período: ' . $e->getMessage()]);
         }
@@ -65,7 +65,7 @@ class PeriodoController extends Controller
     {
         try {
             $periodo = Periodos::findOrFail($id);
-            return view('periodos.edit', compact('periodo'));
+            return view('periodo.edit', compact('periodo'));
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao buscar período para edição: ' . $e->getMessage()]);
         }

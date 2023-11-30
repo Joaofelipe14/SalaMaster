@@ -36,16 +36,11 @@ class ProfessorController extends Controller
             // Adicione outras regras de validação conforme necessário
         ]);
 
-        
+
         try {
-            DB::beginTransaction();
-
             $professor = Professores::create($request->all());
-
             $senhaAleatoria = Str::random(8);
-
             Usuarios::create([
-                'idGrupoUser' => $professor->id,
                 'senha' => Hash::make($senhaAleatoria),
                 'email' => $professor->email,
             ]);

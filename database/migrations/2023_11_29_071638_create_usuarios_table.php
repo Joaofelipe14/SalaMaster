@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->integer('idGrupoUser');
             $table->string('senha');
             $table->string('email')->unique();
             // Adicione outros campos conforme necessário

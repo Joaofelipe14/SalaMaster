@@ -39,7 +39,6 @@ Route::resource('periodos', PeriodoController::class);
 
 Route::resource('disciplinas', DisciplinaController::class);
 
-
 Route::resource('salas', SalaController::class);
 
 

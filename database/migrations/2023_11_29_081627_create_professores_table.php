@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('endereco');
             $table->string('email')->unique();
             $table->string('contato');
+            $table->foreignId('idUsuario')->constrained('usuarios');
             // Adicione outros campos conforme necessário
             $table->timestamps();
         });
