@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/components.css') }}">
 
 <!-- Custom style CSS -->
-<link rel="stylesheet" href="{{ asset('http://127.0.0.1:8000/css/custom.css') }}">
 
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar sticky">
@@ -39,7 +38,7 @@
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-message">
-                    <!-- Seu código de mensagens aqui -->
+                    <!-- Seu cÃ³digo de mensagens aqui -->
                 </div>
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -58,7 +57,7 @@
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
-                    <!-- Seu código de notificações aqui -->
+                    <!-- Seu cÃ³digo de notificaÃ§Ãµes aqui -->
                 </div>
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -67,7 +66,7 @@
         </li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('/../../../loja/public/assets/img/user.png') }}" class="user-img-radious-style">
+                <img alt="image" src="{{ asset('img/user.png') }}" class="user-img-radious-style">
                 <span class="d-sm-none d-lg-inline-block"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
