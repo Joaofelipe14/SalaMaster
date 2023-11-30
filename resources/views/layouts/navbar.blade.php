@@ -1,3 +1,12 @@
+<link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/components.css') }}">
+
+<!-- Custom style CSS -->
+<link rel="stylesheet" href="{{ asset('http://127.0.0.1:8000/css/custom.css') }}">
+
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar sticky">
     <div class="form-inline mr-auto">
