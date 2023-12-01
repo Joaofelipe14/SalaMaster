@@ -35,9 +35,10 @@ class SalaController extends Controller
         try {
             $sala =Salas::create([
                 'numero_sala' => $request->numero_sala,
-                'numero_sala' => $request->numero_sala
+                'tipo' => $request->tipo
             ]);
-            return response()->json(['success' => true, 'message' => 'Disciplinas cadastrado com sucesso!', 'nome' => $sala]);
+            return redirect()->route('salas.index')->with('successo', 'Sala cadastrada');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao cadastrar Disciplina: ' . $e->getMessage()]);
         }
@@ -78,11 +79,14 @@ class SalaController extends Controller
         try {
             $salas =Salas::findOrFail($id);
             $salas->update([
-                'nome' => $request->nome,
-                'carga_horaria' => $request->carga_horaria,
+                'numero_sala' => $request->numero_sala,
+                'tipo' => $request->tipo,
                 'updated_at' => now(), // Defina manualmente a data de atualização
             ]);
-            return response()->json(['success' => true, 'message' => 'Disciplina atualizado com sucesso!', 'disciplina' => $salas]);
+
+
+            return redirect()->route('salas.index')->with('successo', 'Sala Atualizasda');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar disciplina: ' . $e->getMessage()]);
         }
@@ -96,7 +100,8 @@ class SalaController extends Controller
         try {
             $sala =Salas::findOrFail($id);
             $sala->delete();
-            return response()->json(['success' => true, 'message' => 'Disciplina excluído com sucesso!']);
+            return redirect()->route('salas.index')->with('successo', 'Sala excluído com sucesso');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao excluir período: ' . $e->getMessage()]);
         }

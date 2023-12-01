@@ -27,7 +27,7 @@
                                     <table class="table table-striped data-table" id="tabelaProfessores">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>#</th>
                                                 <th>Nome</th>
                                                 <th>Carga Horaria</th>
                                                 <th class="nosort">Ações</th>

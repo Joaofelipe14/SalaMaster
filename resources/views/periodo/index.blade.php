@@ -68,7 +68,7 @@
                                 <table class="table table-striped data-table" id="tabelaProfessores">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>#</th>
                                             <th>Status</th>
                                             <th>Ano Letivo</th>
                                             <th>Data Início</th>
