@@ -1,5 +1,15 @@
     @include('welcome')
     <!-- Main Content -->
+    <script src="{{ asset('js/util.js') }}"></script>
+    <script src="{{ asset('js/util.js') }}"></script>
+    <script src="{{ asset('bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/page/datatables.js') }}"></script>
+    <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
+    <script src="caminho/para/jquery.min.js"></script>
+    <script src="caminho/para/jquery.dataTables.min.js"></script>
+    
     <div class="main-content">
         <section class="section">
             <div class="section-body">
@@ -24,9 +34,8 @@
                                     </div>
                                 </div>
                                 @endif
-
                                 <div class="table-responsive">
-                                    <table class="table table-striped data-table">
+                                    <table class="table table-striped data-table" id="tabelaProfessores">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">
@@ -76,7 +85,12 @@
             </div>
         </section>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#tabelaProfessores').DataTable();
+        });
 
+    </script>
     <!-- 
     <form action="{{ route('professores.destroy', $professor->id) }}" method="POST" style="display: inline;">
                                                         @csrf
