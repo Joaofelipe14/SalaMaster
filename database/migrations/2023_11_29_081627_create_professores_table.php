@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('endereco');
             $table->string('email')->unique();
+            $table->string('cpf')->unique();
             $table->string('contato');
             $table->foreignId('idUsuario')->constrained('usuarios');
             // Adicione outros campos conforme necessário
