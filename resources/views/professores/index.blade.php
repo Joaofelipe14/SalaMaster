@@ -34,9 +34,6 @@
                                     <table class="table table-striped data-table" id="tabelaProfessores">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">
-                                                    #
-                                                </th>
                                                 <th>Nome</th>
                                                 <th>Email</th>
                                                 <th>CPF</th>
@@ -47,7 +44,6 @@
                                         <tbody>
                                             @foreach($professores as $professor)
                                             <tr>
-                                                <td>{{ $professor->id }}</td>
                                                 <td>{{ $professor->nome }}</td>
                                                 <td>{{ $professor->email }}</td>
                                                 <td>{{ $professor->cpf }}</td>
