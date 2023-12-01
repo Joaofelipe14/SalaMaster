@@ -7,13 +7,22 @@
     <script src="{{ asset('js/page/datatables.js') }}"></script>
     <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
-    <script src="caminho/para/jquery.min.js"></script>
-    <script src="caminho/para/jquery.dataTables.min.js"></script>
-    
+
     <div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div>
+                @if($mensagem = session('successo'))
+                    <div class="alert alert-success alert-dismissible alert-has-icon">
+                        <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="alert-body">
+                            <div class="alert-title">{{ $mensagem }}</div>
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-block">
@@ -21,19 +30,6 @@
                                 <a class="btn btn-primary float-right" href="{{ route('professores.create') }}">Cadastrar</a>
                             </div>
                             <div class="card-body">
-
-                                @if($mensagem = session('successo'))
-                                <div class="alert alert-success alert-dismissible alert-has-icon">
-                                    <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
-                                    <div class="alert-body">
-                                        <div class="alert-title">DEU BOM !!</div>
-                                        <button class="close" data-dismiss="alert">
-                                            <span>&times;</span>
-                                        </button>
-                                        {{ $mensagem }}
-                                    </div>
-                                </div>
-                                @endif
                                 <div class="table-responsive">
                                     <table class="table table-striped data-table" id="tabelaProfessores">
                                         <thead>
