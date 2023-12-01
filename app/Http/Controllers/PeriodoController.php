@@ -30,7 +30,8 @@ class PeriodoController extends Controller
     {
         try {
             $periodo = Periodos::create($request->all());
-            return response()->json(['success' => true, 'message' => 'Período cadastrado com sucesso!', 'periodo' => $periodo]);
+            return redirect()->route('periodos.index')->with('successo','Período cadastrado com sucesso!');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao cadastrar período: ' . $e->getMessage()]);
         }
@@ -64,8 +65,10 @@ class PeriodoController extends Controller
     public function edit(string $id)
     {
         try {
-            $periodo = Periodos::findOrFail($id);
+           $periodo = Periodos::find($id);
+
             return view('periodo.edit', compact('periodo'));
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao buscar período para edição: ' . $e->getMessage()]);
         }
@@ -79,7 +82,8 @@ class PeriodoController extends Controller
         try {
             $periodo = Periodos::findOrFail($id);
             $periodo->update($request->all());
-            return response()->json(['success' => true, 'message' => 'Período atualizado com sucesso!', 'periodo' => $periodo]);
+            return redirect()->route('periodos.index')->with('successo','Período atualizado com sucesso!');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar período: ' . $e->getMessage()]);
         }
@@ -93,7 +97,8 @@ class PeriodoController extends Controller
         try {
             $periodo = Periodos::findOrFail($id);
             $periodo->delete();
-            return response()->json(['success' => true, 'message' => 'Período excluído com sucesso!']);
+            return redirect()->route('periodos.index')->with('successo','Período excluído com sucesso!');
+
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao excluir período: ' . $e->getMessage()]);
         }

@@ -1,6 +1,6 @@
 <!-- resources/views/periodos/create.blade.php -->
 
-<h2>Adicionar Período</h2>
+<!-- <h2>Adicionar Período</h2>
 
 <form action="{{ route('periodos.update', $periodo->id) }}" method="POST">
     @csrf
@@ -22,4 +22,62 @@
         <input type="date" class="form-control" id="data_fim" name="data_fim" value="{{ $periodo->data_fim }}" required>
     </div>
     <button type="submit" class="btn btn-primary">Atualizar</button>
-</form>
+</form> -->
+
+
+<!-- resources/views/disciplina/edit.blade.php -->
+
+
+
+    <!-- resources/views/disciplina/edit.blade.php -->
+    @include('welcome')
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Editar Periodos</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('periodos.update', $periodo->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Status</label>
+                                        <input type="text" class="form-control" id="status" value="{{ $periodo->status }}" name="status" required>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label>Ano Letivo</label>
+                                        <input type="text" class="form-control" id="ano_letivo" value="{{ $periodo->ano_letivo }}" name="ano_letivo" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Carga Horaria</label>
+                                        <input type="date" class="form-control" id="data_inicio" value="{{ $periodo->data_inicio }}" name="data_inicio" required>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label>Carga Horaria</label>
+                                        <input type="date" class="form-control" id="data_fim" value="{{ $periodo->data_fim }}" name="data_fim" required>
+                                    </div>
+
+
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</section>
+</div>

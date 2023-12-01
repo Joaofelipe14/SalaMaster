@@ -36,8 +36,8 @@
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="package"></i><span>Salas e Periodos</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ url('restrita/master') }}">Salas</a></li>
-                    <li><a class="nav-link" href="{{ url('restrita/categorias') }}">Períodos Letivos</a></li>
+                    <li><a class="nav-link" href="{{ url('salas') }}">Salas</a></li>
+                    <li><a class="nav-link" href="{{ url('periodos') }}">Períodos Letivos</a></li>
                 </ul>
             </li>
 
