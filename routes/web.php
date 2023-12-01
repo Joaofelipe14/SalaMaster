@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -18,29 +19,25 @@ use App\Http\Controllers\SalaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/logar', [LoginController::class, 'showLoginForm']);
+Route::post('/logar', [LoginController::class, 'login']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::group(['middleware' => 'check.jwt.token'], function () {
+    Route::resource('professores', ProfessorController::class);
+    Route::resource('periodos', PeriodoController::class);
+    Route::resource('disciplinas', DisciplinaController::class);
+    Route::resource('salas', SalaController::class);
+ 
 });
 
 
 
-Route::resource('professores', ProfessorController::class);
-
-Route::resource('periodos', PeriodoController::class);
-
-Route::resource('disciplinas', DisciplinaController::class);
-
-Route::resource('salas', SalaController::class);
 
 
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';

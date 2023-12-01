@@ -89,7 +89,7 @@ class ProfessorController extends Controller
     public function update(Request $request, $id)
     {
         try {
-           
+
             $professor = Professores::find($id);
 
             if (!$professor) {
@@ -107,7 +107,7 @@ class ProfessorController extends Controller
             $professor->usuario->update([
                 'status' => $request->input('status'),
             ]);
-            
+
             return redirect()->route('professores.index')->with('successo', 'Professor atualizado com sucesso.');
         } catch (ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
