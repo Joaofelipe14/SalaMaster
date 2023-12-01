@@ -36,6 +36,12 @@ class LoginController extends Controller
                 // Senha válida, autenticação bem-sucedida
 
                 $token = JWTAuth::fromUser($user);
+                if ($user->tipousuario == 1) {
+                    $request->session()->put('tipousuario', 'admin');
+                } elseif ($user->tipousuario == 2) {
+                    $request->session()->put('tipousuario', 'professor');
+                }
+
                 // Armazenar o token na sessão (opcional)
                 $request->session()->put('auth_token', $token);
                 return redirect()->intended('/professores/create');

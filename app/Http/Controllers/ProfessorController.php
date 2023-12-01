@@ -46,6 +46,7 @@ class ProfessorController extends Controller
                 'senha' => Hash::make($request->input('cpf')),
                 'email' => $request->input('email'),
                 'status' => '1',
+                'tipousuario' => '2',
             ]);
             // Associa o ID do usuário criado ao criar um professor
             Professores::create([

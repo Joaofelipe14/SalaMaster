@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('senha');
             $table->string('email')->unique();
             $table->integer('status');
+            $table->integer('tipousuario');
             // Adicione outros campos conforme necessário
             $table->timestamps();
         });

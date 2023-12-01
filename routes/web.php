@@ -25,18 +25,19 @@ Route::get('/', function () {
 Route::get('/logar', [LoginController::class, 'showLoginForm']);
 Route::post('/logar', [LoginController::class, 'login']);
 
-Route::group(['middleware' => 'check.jwt.token'], function () {
+
+// Rotas do Adminstrador 
+Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], function () {
+
     Route::resource('professores', ProfessorController::class);
     Route::resource('periodos', PeriodoController::class);
     Route::resource('disciplinas', DisciplinaController::class);
     Route::resource('salas', SalaController::class);
- 
 });
 
-
-
-
-
+// Rotas do Professor 
+Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], function () {
+});
 
 
 

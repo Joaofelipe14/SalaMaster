@@ -15,6 +15,7 @@ class InsertAdmin extends Seeder
             'senha' => Hash::make('admin'),
             'email' => 'admin@admin.com',
             'status' => 1,
+            'tipousuario'=>1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
