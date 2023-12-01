@@ -42,7 +42,7 @@
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('restrita/produtos') }}" class="nav-link"><i data-feather="archive"></i><span>Disciplinas</span></a>
+                <a href="{{ url('disciplinas') }}" class="nav-link"><i data-feather="archive"></i><span>Disciplinas</span></a>
             </li>
 
             <li class="dropdown">

@@ -11,6 +11,7 @@ class Disciplinas extends Model
 
     protected $table = 'disciplinas';
 
-    protected $fillable = ['nome , carga_horaria'];
+
+    protected $fillable = ['nome', 'carga_horaria'];
 
 }

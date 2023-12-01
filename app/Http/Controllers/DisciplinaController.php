@@ -31,21 +31,20 @@ class DisciplinaController extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'nome' => 'required',
             'carga_horaria' => 'required'
 
         ]);
 
-       
-
         try {
             $disciplinas = Disciplinas::create([
                 'nome' => $request->nome,
                 'carga_horaria' => $request->carga_horaria
             ]);
-            return response()->json(['success' => true, 'message' => 'Disciplinas cadastrado com sucesso!', 'nome' => $disciplinas]);
+
+
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplinas ' . $disciplinas->nome . ' cadastrado com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao cadastrar Disciplina: ' . $e->getMessage()]);
         }
@@ -90,7 +89,7 @@ class DisciplinaController extends Controller
                 'carga_horaria' => $request->carga_horaria,
                 'updated_at' => now(), // Defina manualmente a data de atualização
             ]);
-            return response()->json(['success' => true, 'message' => 'Disciplina atualizado com sucesso!', 'disciplina' => $disciplinas]);
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplinas ' . $disciplinas . ' atualizado com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar disciplina: ' . $e->getMessage()]);
         }
@@ -104,7 +103,7 @@ class DisciplinaController extends Controller
         try {
             $disciplinas = Disciplinas::findOrFail($id);
             $disciplinas->delete();
-            return response()->json(['success' => true, 'message' => 'Disciplina excluído com sucesso!']);
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplina excluído com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao excluir período: ' . $e->getMessage()]);
         }
