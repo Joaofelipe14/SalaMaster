@@ -42,13 +42,12 @@
                                         <tbody>
                                             @foreach($professores as $professor)
                                             <tr>
-
                                                 <td>{{ $professor->id }}</td>
                                                 <td>{{ $professor->nome }}</td>
                                                 <td>{{ $professor->email }}</td>
                                                 <td>{{ $professor->cpf }}</td>
                                                 <td>
-                                                    @if($professor->usuario->status == 1)
+                                                    @if(isset($professor->usuario) && isset($professor->usuario->status) && $professor->usuario->status == 1)
                                                     <span class="badge badge-success">Ativo</span>
                                                     @else
                                                     <span class="badge badge-danger">Desativo</span>
@@ -56,12 +55,17 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('professores.edit', $professor->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                                                    <a href=" <?php url('restrita/sistema')  ?>       " class="btn btn-icon btn-danger delete" data-confirm="Deseja apagar a Marca?"><i class="fas fa-times"></i></a>
-
+                                                    @if(isset($professor->id))
+                                                    <form action="{{ route('professores.destroy', $professor->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger" data-confirm="Deseja apagar a Marca?"><i class="fas fa-times"></i></button>
+                                                    </form>
+                                                    @endif
                                                 </td>
-
                                             </tr>
                                             @endforeach
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -78,4 +82,5 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Excluir</button>
-                                                    </form> -->
+                                                    </form>
+                                                 -->
