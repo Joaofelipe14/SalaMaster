@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('dias_semana', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            // Adicione outros campos conforme necessário
+            $table->char('domingo', 1)->nullable();
+            $table->char('segunda', 1)->nullable();
+            $table->char('terca', 1)->nullable();
+            $table->char('quarta', 1)->nullable();
+            $table->char('quinta', 1)->nullable();
+            $table->char('sexta', 1)->nullable();
+            $table->char('sabado', 1)->nullable();            // Adicione outros campos conforme necessário
             $table->timestamps();
         });
     }
