@@ -12,10 +12,7 @@
     <script src="{{ asset('js/util.js') }}"></script>
     <script src="{{ asset('js/util.js') }}"></script>
     <script src="{{ asset('js/util.js') }}"></script>
-    <script src="{{ asset('bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('js/page/datatables.js') }}"></script>
-    <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('bundles/datatables/datatables.min.js') }}"></script>
 
 

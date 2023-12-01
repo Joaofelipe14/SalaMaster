@@ -109,6 +109,10 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#tabelaProfessores').DataTable();
-    });
+            $('#tabelaProfessores').DataTable();
+            $('#tabelaProfessores_filter').css({
+                'display': 'flex',
+                'justify-content': 'flex-end'
+            });
+        });
 </script>

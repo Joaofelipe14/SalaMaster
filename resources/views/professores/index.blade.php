@@ -1,12 +1,12 @@
     @include('welcome')
     <!-- Main Content -->
-  
+
 
     <div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div>
-                @if($mensagem = session('successo'))
+                    @if($mensagem = session('successo'))
                     <div class="alert alert-success alert-dismissible alert-has-icon">
                         <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
                         <div class="alert-body">
@@ -16,7 +16,7 @@
                             </button>
                         </div>
                     </div>
-                @endif
+                    @endif
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-block">
@@ -60,7 +60,7 @@
                                                 </td>
                                             </tr>
                                             @endforeach
-                                           
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -74,8 +74,11 @@
     <script>
         $(document).ready(function() {
             $('#tabelaProfessores').DataTable();
+            $('#tabelaProfessores_filter').css({
+                'display': 'flex',
+                'justify-content': 'flex-end'
+            });
         });
-
     </script>
     <!-- 
     <form action="{{ route('professores.destroy', $professor->id) }}" method="POST" style="display: inline;">
