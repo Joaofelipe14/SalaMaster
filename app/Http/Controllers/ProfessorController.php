@@ -153,14 +153,15 @@ class ProfessorController extends Controller
             // Faça a lógica de atualização de senha aqui...
             $professor = Professores::find($professorId);
 
-
+       
             // Se quiser visualizar os dados, pode usar dd() para debug
             if (!Hash::check($request->input('senha_atual'), $professor->usuario->senha)) {
-                // throw new \Exception("A senha atual não está correta.");
+                // throw new \Exception("A senha atual não está correta.")
 
                 $erro = 'A senha atual não está correta.';
                 return view('docentes.changepassword', compact('professorId', 'erro'));
             }
+
             DB::beginTransaction();
 
 
@@ -174,16 +175,12 @@ class ProfessorController extends Controller
             ]);
             DB::commit();
 
-            return redirect()->route('docentes.home')->with('successo', 'Senha Atualizada com sucesso');
+            return redirect('docentes/home')->with('successo', 'Senha Atualizada com sucesso');
+
         } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar senha: ' . $e->getMessage()]);
         }
-    }
-
-    public function HomeDocentes()
-    {
-        return view('docentes.home');
     }
 }

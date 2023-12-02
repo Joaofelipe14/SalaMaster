@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\DocentesController;
 use App\Http\Controllers\gradeHorariosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeriodoController;
@@ -25,9 +26,10 @@ Route::get('/', function () {
 
 Route::get('/logar', [LoginController::class, 'showLoginForm']);
 Route::post('/logar', [LoginController::class, 'login']);
-
 Route::get('/logout', [LoginController::class, 'logout']);
 
+
+Route::resource('professores', ProfessorController::class);
 
 // Rotas do Adminstrador 
 Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], function () {
@@ -42,7 +44,12 @@ Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], functio
 // Rotas do Professor 
 Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function () {
     Route::post('docentes/update-password', [ProfessorController::class, 'updatePassword'])->name('docentes.update-password');
-    Route::get('docentes/home', [ProfessorController::class, 'HomeDocentes'])->name('docentes.home');
+    Route::get('/docentes/index/update-password', [LoginController::class, 'IndexUpdatePassword']);
+    //  Route::get('homedocentes/home', [ProfessorController::class, 'HomeDocentes'])->name('docentes.home');
+
+    Route::get('editByid/{id}', [DocentesController::class, 'editById'])->name('editByid');
+    Route::put('docentes/{professor}', [DocentesController::class, 'update'])->name('docentes.update');
+    Route::get('/docentes/home', [DocentesController::class, 'indexHome']);
 });
 
 

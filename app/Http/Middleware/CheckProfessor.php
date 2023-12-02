@@ -15,8 +15,10 @@ class CheckProfessor
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
         if ($request->session()->get('tipousuario') === 'professor') {
             return $next($request);
         }
-        return redirect('/acesso-negado');    }
+        return redirect('/acesso-negado');
+    }
 }

@@ -34,7 +34,7 @@
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('gradeHorarios') }}" class="nav-link"><i data-feather="star"></i><span>Grades Horários</span></a>
+                <a href="{{ url('gradeHorarios') }}" class="nav-link"><i data-feather="time"></i><span>Grades Horários</span></a>
             </li>
 
             <li class="dropdown">
@@ -46,7 +46,7 @@
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('disciplinas') }}" class="nav-link"><i data-feather="archive"></i><span>Disciplinas</span></a>
+                <a href="{{ url('disciplinas') }}" class="nav-link"><i data-feather="book"></i><span>Disciplinas</span></a>
             </li>
 
             <li class="dropdown">
@@ -60,13 +60,17 @@
             <!-- Fim da Logica para o Adminstrador -->
             @else
             <!-- Logica para o Professor Adicione aqui o código específico para professores -->
+            @php
+            $professorId = session('professorId'); // Obtém o valor de 'professorId' da sessão
+            @endphp
             <li class="dropdown">
-                <a href="{{ url('restrita') }}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
+                <a  href="{{ url('/docentes/home')}}"class="nav-link"><i data-feather="home"></i><span>Home</span></a>
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('professores') }}" class="nav-link"><i data-feather="users"></i><span>Professores</span></a>
+            <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
             </li>
+
             @endif
 
             <!-- Fim da Logica para o Professor -->
