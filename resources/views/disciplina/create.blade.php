@@ -19,12 +19,16 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" required>
+                                        <input type="text" class="form-control" id="nome" name="nome" minlength="4" maxlength="30"required>
                                     </div>
 
                                     <div class="form-group col-md-2">
                                         <label> Carga Horaria</label>
-                                        <input type="carga_horaria" class="form-control" id="carga_horaria" name="carga_horaria" required>
+                                        <select class="form-control" id="carga_horaria" name="carga_horaria" required>
+                                            <option value="30">30 horas</option>
+                                            <option value="60" selected>60 horas</option>
+                                            <option value="90">90 horas</option>
+                                        </select>
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Adicionar</button>

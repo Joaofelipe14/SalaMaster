@@ -26,7 +26,17 @@
 
                                     <div class="form-group col-md-4">
                                         <label>Carga Horaria</label>
-                                        <input type="carga_horaria" class="form-control" id="carga_horaria" value="{{ $disciplina->carga_horaria }}" name="carga_horaria" required>
+                                       <select class="form-control" id="carga_horaria" name="carga_horaria" required>
+                                            @if($disciplina)
+                                                <option value="30" {{$disciplina->carga_horaria == '30' ? 'selected' : '' }}>30 horas</option>
+                                                <option value="60" {{$disciplina->carga_horaria == '60' ? 'selected' : '' }}>60 horas</option>
+                                                <option value="90" {{$disciplina->carga_horaria == '90' ? 'selected' : '' }}>90 horas</option>
+                                            @else
+                                                <option value="30">30 horas</option>
+                                                <option value="60">60 horas</option>
+                                                <option value="90">90 horas</option>
+                                            @endif
+                                        </select>
                                     </div>
 
 
