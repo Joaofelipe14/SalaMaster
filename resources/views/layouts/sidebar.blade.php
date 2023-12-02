@@ -34,7 +34,7 @@
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('gradeHorarios') }}" class="nav-link"><i data-feather="time"></i><span>Grades Horários</span></a>
+                <a href="{{ url('gradeHorarios') }}" class="nav-link"><i data-feather="clock"></i><span>Grades Horários</span></a>
             </li>
 
             <li class="dropdown">
@@ -69,6 +69,9 @@
 
             <li class="dropdown ">
             <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
+            </li>
+            <li class="dropdown ">
+            <a  class="nav-link"><i data-feather="mail"></i><span>Messagem</span></a>
             </li>
 
             @endif
