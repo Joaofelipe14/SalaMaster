@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('grade_horarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_horario')->constrained('horarios');
-            $table->foreignId('id_dia_semana')->constrained('dias_semana');
+            // $table->foreignId('id_horario')->constrained('horarios');
+            // $table->foreignId('id_dia_semana')->constrained('dias_semana');
             $table->foreignId('id_sala')->constrained('salas');
             $table->foreignId('id_disciplina')->constrained('disciplinas');
             $table->foreignId('id_professor')->constrained('professores');
             $table->foreignId('id_periodo')->constrained('periodos');
+            $table->foreignId('id_dia_semana');
+
             // Adicione outros campos conforme necessário
             $table->timestamps();
         });

@@ -56,14 +56,14 @@
                                     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
 
                                     <div class="form-group col-md-6">
-                                        <label for="grups">Grupos de Horários</label>
-                                        <select name="grups[]" id="grups" multiple>
+                                        <label for="horarios">Grupos de Horários</label>
+                                        <select name="horarios[]" id="horarios" multiple>
                                             @foreach ($horarios as $horario)
-                                            <option required value="{{ $horario->id }}">{{$horario->horario_inicio }}/{{ $horario->horario_fim}}</option>
+                                            <option required value="{{ $horario->id }}">{{$horario->horario_inicio }}/{{ $horario->horario_fim}} - {{ $horario->nome_horario}} </option>
                                             @endforeach
                                         </select>
                                         <script>
-                                            new MultiSelectTag('grups'); // id
+                                            new MultiSelectTag('horarios'); // id
                                         </script>
                                     </div>
 

@@ -41,10 +41,13 @@ class ProfessorController extends Controller
         ]);
 
 
+        $cpf = $request->input('cpf');
+        $cpf = str_replace(['-', '.'], '', $cpf);
+
         try {
             DB::beginTransaction();
             $usuario = Usuarios::create([
-                'senha' => Hash::make($request->input('cpf')),
+                'senha' => Hash::make($cpf),
                 'email' => $request->input('email'),
                 'status' => '1',
                 'tipousuario' => '2',
@@ -55,7 +58,7 @@ class ProfessorController extends Controller
                 'endereco' => $request->input('endereco'),
                 'contato' => $request->input('contato'),
                 'email' => $request->input('email'),
-                'cpf' => $request->input('cpf'),
+                'cpf' =>   $cpf,
                 'idUsuario' => $usuario->id,
                 'primeiroAcesso' => 'N',
 
@@ -124,7 +127,14 @@ class ProfessorController extends Controller
     {
         try {
             $professor = Professores::findOrFail($id);
+
+            // Recupere o usuário associado ao professor
+            $usuario = $professor->usuario;
+
+            // Exclua o professor
             $professor->delete();
+
+            $usuario->delete();
             return redirect()->route('professores.index')->with('successo', 'Professor excluído com sucesso.');
         } catch (\Exception $e) {
             // Se houver erros, redirecione com uma mensagem de erro
@@ -172,8 +182,8 @@ class ProfessorController extends Controller
         }
     }
 
-    public function HomeDocentes(){
+    public function HomeDocentes()
+    {
         return view('docentes.home');
-
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Horarios;
 use App\Models\Periodos;
 use App\Models\Professores;
 use App\Models\Salas;
+use App\Models\SemanaDiasHorario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +23,8 @@ class gradeHorariosController extends Controller
      */
     public function index()
     
-    {   $gradeHorarios = GradeHorarios::select(
+    {   
+        $gradeHorarios = GradeHorarios::select(
         'professores.id', 
         'professores.nome as nome',
         'disciplinas.nome as disciplina', 
@@ -45,7 +47,7 @@ class gradeHorariosController extends Controller
     public function create()
     {   
         $disciplinas = Disciplinas::select('id', 'nome')->get();
-        $horarios = Horarios::select('id', 'horario_inicio', 'horario_fim')->get();
+        $horarios = Horarios::all();
         $salas = Salas::select('id', 'numero_sala')->get();
         $periodos = Periodos::select('id', 'status', 'ano_letivo')
             ->where('status', 1)
@@ -92,13 +94,21 @@ class gradeHorariosController extends Controller
 
             $id_dia_semana = DB::table('dias_semana')->insertGetId($diasAutomatizados);
 
-            $gradeHorarios = GradeHorarios::create([
+            $horarios= $request->input('horarios');
+
+            foreach ($horarios as $idhorario) {
+               SemanaDiasHorario::create([
+                    "id_dia_semana" =>  $id_dia_semana,
+                    "id_horario" => $idhorario
+                ]);
+            }
+            
+           GradeHorarios::create([
                 "id_professor" => $request->input('professor_id'),
                 "id_disciplina" => $request->input('disciplina_id'),
                 "id_sala" => $request->input('sala_id'),
                 "id_periodo" => $request->input('periodo_id'),
-                "id_dia_semana" =>  $id_dia_semana,
-                "id_horario" => 1
+                "id_dia_semana" =>  $id_dia_semana, // chave unica para usar como comparação
             ]);
             // Associa o ID do usuário criado ao criar um professor
             DB::commit();

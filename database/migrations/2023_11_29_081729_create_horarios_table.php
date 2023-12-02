@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('horario_inicio');
             $table->string('horario_fim');
+            $table->string('nome_horario');
             // Adicione outros campos conforme necessário
             $table->timestamps();
         });

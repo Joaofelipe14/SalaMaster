@@ -26,6 +26,8 @@ Route::get('/', function () {
 Route::get('/logar', [LoginController::class, 'showLoginForm']);
 Route::post('/logar', [LoginController::class, 'login']);
 
+Route::get('/logout', [LoginController::class, 'logout']);
+
 
 // Rotas do Adminstrador 
 Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], function () {

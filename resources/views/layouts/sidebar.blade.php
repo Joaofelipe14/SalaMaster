@@ -34,7 +34,7 @@
             </li>
 
             <li class="dropdown ">
-                <a href="{{ url('restrita/marcas') }}" class="nav-link"><i data-feather="star"></i><span>Grades Horários</span></a>
+                <a href="{{ url('gradeHorarios') }}" class="nav-link"><i data-feather="star"></i><span>Grades Horários</span></a>
             </li>
 
             <li class="dropdown">

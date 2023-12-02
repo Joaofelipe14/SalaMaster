@@ -9,23 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('salas', function (Blueprint $table) {
+        Schema::create('semana_dias_horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_sala');
-            $table->string('tipo');
+            $table->foreignId('id_horario')->constrained('horarios');
+            $table->foreignId('id_dia_semana')->constrained('dias_semana');
             // Adicione outros campos conforme necessário
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('salas');
+        //
     }
 };

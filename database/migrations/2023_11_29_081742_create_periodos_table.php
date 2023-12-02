@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('periodos', function (Blueprint $table) {
             $table->id();
             $table->integer('status');
-            $table->integer('ano_letivo');
+            $table->string('ano_letivo');
             $table->date('data_inicio');
             $table->date('data_fim');
             // Adicione outros campos conforme necessário

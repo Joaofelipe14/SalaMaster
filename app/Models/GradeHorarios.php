@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Horarios;
 use App\Models\Professores;
-use App\Models\DiasSemanas;
+use App\Models\SemanaDiasHorario;
 use App\Models\Periodos;
 use App\Models\Salas;
 use App\Models\Disciplinas;
@@ -15,7 +15,6 @@ class GradeHorarios extends Model
     protected $table = 'grade_horarios';
 
     protected $fillable = [
-        'id_horario',
         'id_dia_semana',
         'id_sala',
         'id_disciplina',
@@ -23,17 +22,8 @@ class GradeHorarios extends Model
         'id_periodo',
     ];
 
-    // Defina as relações como chaves estrangeiras
-    public function horario()
-    {
-        return $this->belongsTo(Horarios::class, 'id_horario');
-    }
 
-    public function diaSemana()
-    {
-        return $this->belongsTo(DiasSemanas::class, 'id_dia_semana');
-    }
-
+   
     public function sala()
     {
         return $this->belongsTo(Salas::class, 'id_sala');

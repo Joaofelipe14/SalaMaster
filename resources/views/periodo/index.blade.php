@@ -77,7 +77,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($periodos as $disciplina)
+                                        @foreach($periodos as $periodo)
                                         <tr>
                                             <td>{{ $periodo->id }}</td>
                                             <td>{{ $periodo->status }}</td>
@@ -86,7 +86,7 @@
                                             <td>{{ $periodo->data_fim }}</td>
                                             <td>
                                                 <a href="{{ route('periodos.edit', $periodo->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                                                @if(isset($disciplina->id))
+                                                @if(isset($periodo->id))
                                                 <form action="{{ route('periodos.destroy', $periodo->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
