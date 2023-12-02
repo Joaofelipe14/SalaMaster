@@ -35,11 +35,12 @@ Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], functio
     Route::resource('disciplinas', DisciplinaController::class);
     Route::resource('salas', SalaController::class);
     Route::resource('gradeHorarios', gradeHorariosController::class);
-
 });
 
 // Rotas do Professor 
-Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], function () {
+Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function () {
+    Route::post('docentes/update-password', [ProfessorController::class, 'updatePassword'])->name('docentes.update-password');
+    Route::get('docentes/home', [ProfessorController::class, 'HomeDocentes'])->name('docentes.home');
 });
 
 

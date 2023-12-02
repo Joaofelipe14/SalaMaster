@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('cpf')->unique();
             $table->string('contato');
+            $table->char('primeiroAcesso',1);
             $table->foreignId('idUsuario')->constrained('usuarios');
             // Adicione outros campos conforme necessário
             $table->timestamps();

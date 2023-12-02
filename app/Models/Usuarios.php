@@ -26,6 +26,12 @@ class Usuarios extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
+
+    public function professor()
+    {
+        // Relacionamento de muitos para um  com a tabela professores
+        return $this->hasOne(Professores::class, 'idUsuario');
+    }
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *

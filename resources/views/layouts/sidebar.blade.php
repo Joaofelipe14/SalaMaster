@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+<!-- Template CSS -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/components.css') }}">
 
-    <!-- Custom style CSS -->
-    <!-- <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"> -->
-    <link rel='shortcut icon' type='image/x-icon' href="{{ asset('img/favicon.ico') }}"/>
+<!-- Custom style CSS -->
+<!-- <link rel="stylesheet" href="{{ asset('/css/custom.css') }}"> -->
+<link rel='shortcut icon' type='image/x-icon' href="{{ asset('img/favicon.ico') }}" />
 <!-- JS Libraries -->
 <!-- Page Specific JS File -->
 <!-- Template JS File -->
@@ -20,6 +20,10 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Ambiente Seguro</li>
+
+
+            <!-- Logica para o Adminstrador -->
+            @if(session('tipousuario') === 'admin')
 
             <li class="dropdown">
                 <a href="{{ url('restrita') }}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
@@ -53,6 +57,20 @@
                     <li><a class="nav-link" href="{{ url('restrita/sistema/pagseguro') }}">Pagseguro</a></li>
                 </ul>
             </li>
+            <!-- Fim da Logica para o Adminstrador -->
+            @else
+            <!-- Logica para o Professor Adicione aqui o código específico para professores -->
+            <li class="dropdown">
+                <a href="{{ url('restrita') }}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
+            </li>
+
+            <li class="dropdown ">
+                <a href="{{ url('professores') }}" class="nav-link"><i data-feather="users"></i><span>Professores</span></a>
+            </li>
+            @endif
+
+            <!-- Fim da Logica para o Professor -->
+
         </ul>
     </aside>
 </div>

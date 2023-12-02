@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Professores;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -56,6 +57,8 @@ class ProfessorController extends Controller
                 'email' => $request->input('email'),
                 'cpf' => $request->input('cpf'),
                 'idUsuario' => $usuario->id,
+                'primeiroAcesso' => 'N',
+
                 // Adicione outros campos conforme necessário
             ]);
             DB::commit();
@@ -127,5 +130,50 @@ class ProfessorController extends Controller
             // Se houver erros, redirecione com uma mensagem de erro
             return redirect()->back()->with('error', 'Erro ao excluir professor: ' . $e->getMessage());
         }
+    }
+
+    public function updatePassword(Request $request)
+    {
+        try {
+            $professorId = $request->input('idUsuario');
+            $senhaAtual = $request->input('senha_atual');
+            $novaSenha = $request->input('nova_senha');
+            $confirmarSenha = $request->input('confirmar_senha');
+
+            // Faça a lógica de atualização de senha aqui...
+            $professor = Professores::find($professorId);
+
+
+            // Se quiser visualizar os dados, pode usar dd() para debug
+            if (!Hash::check($request->input('senha_atual'), $professor->usuario->senha)) {
+                // throw new \Exception("A senha atual não está correta.");
+
+                $erro = 'A senha atual não está correta.';
+                return view('docentes.changepassword', compact('professorId', 'erro'));
+            }
+            DB::beginTransaction();
+
+
+            // Atualiza a senha do usuário associado ao professor
+            $professor->usuario->update([
+                'senha' => Hash::make($request->input('nova_senha')),
+
+            ]);
+            $professor->update([
+                'primeiroAcesso' => 'S',
+            ]);
+            DB::commit();
+
+            return redirect()->route('docentes.home')->with('successo', 'Senha Atualizada com sucesso');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return response()->json(['success' => false, 'message' => 'Erro ao atualizar senha: ' . $e->getMessage()]);
+        }
+    }
+
+    public function HomeDocentes(){
+        return view('docentes.home');
+
     }
 }

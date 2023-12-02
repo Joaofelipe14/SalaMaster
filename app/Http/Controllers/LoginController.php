@@ -28,6 +28,7 @@ class LoginController extends Controller
 
         $user = Usuarios::where('email', $request->input('email'))->first();
 
+        $credentials = $request->only('email', 'senha');
         if ($user) {
             // Verifique a senha usando Hash::check
 
@@ -36,15 +37,22 @@ class LoginController extends Controller
                 // Senha válida, autenticação bem-sucedida
 
                 $token = JWTAuth::fromUser($user);
+                $request->session()->put('auth_token', $token);
+
                 if ($user->tipousuario == 1) {
                     $request->session()->put('tipousuario', 'admin');
+                    return redirect()->intended('/professores');
                 } elseif ($user->tipousuario == 2) {
                     $request->session()->put('tipousuario', 'professor');
-                }
+                    echo '<pre>';
 
-                // Armazenar o token na sessão (opcional)
-                $request->session()->put('auth_token', $token);
-                return redirect()->intended('/professores/create');
+                    if ($user->professor->primeiroAcesso == 'N') {
+                        $professorId =  $user->professor->id;
+                        return view('docentes.changepassword', compact('professorId'));
+                    } else {
+                        return view('docentes.home');
+                    }
+                }
             }
         }
 
@@ -54,13 +62,7 @@ class LoginController extends Controller
     {
         // Remover o token da sessão (opcional)
         $request->session()->forget('auth_token');
-
-        // Invalidar o token JWT
-        JWTAuth::invalidate(JWTAuth::getToken());
-
-        // Deslogar o usuário
-        Auth::logout();
-
+        $request->session()->forget('tipousuario');
         // Redirecionar para a página de login ou outra página desejada
         return redirect()->route('login');
     }

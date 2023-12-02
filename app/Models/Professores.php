@@ -12,7 +12,7 @@ class Professores extends Model
     use HasFactory;
 
     
-    protected $fillable = ['nome','endereco', 'email', 'contato','idUsuario','cpf'];
+    protected $fillable = ['nome','endereco', 'email', 'contato','idUsuario','cpf','primeiroAcesso'];
 
     public function usuario()
     {
