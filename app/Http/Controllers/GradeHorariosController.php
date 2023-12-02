@@ -21,8 +21,20 @@ class gradeHorariosController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $gradeHorarios = GradeHorarios::all();
+    
+    {   $gradeHorarios = GradeHorarios::select(
+        'professores.id', 
+        'professores.nome as nome',
+        'disciplinas.nome as disciplina', 
+        'periodos.ano_letivo as ano_letivo',
+        'salas.numero_sala')
+        ->join('professores', 'grade_horarios.id_professor', '=', 'professores.id')
+        ->join('disciplinas', 'grade_horarios.id_disciplina', '=', 'disciplinas.id')
+        ->join('periodos', 'grade_horarios.id_periodo', '=', 'periodos.id')
+        ->join('salas', 'grade_horarios.id_sala', '=', 'salas.id')
+        ->get();
+
+        //$gradeHorarios = GradeHorarios::all();
 
         return view('gradeHorarios.index', compact('gradeHorarios'));
     }

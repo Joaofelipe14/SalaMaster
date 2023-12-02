@@ -20,7 +20,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-block">
-                            <h4>Lista de gradeHorarios</h4>
+                            <h4>Lista Vínculos Grade</h4>
                             <a class="btn btn-primary float-right" href="{{ route('gradeHorarios.create') }}">Cadastrar</a>
                         </div>
                         <div class="card-body">
@@ -28,20 +28,22 @@
                                 <table class="table table-striped data-table" id="tabelaProfessores">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Numero gradeHorario</th>
-                                            <th>Tipo</th>
+                                            <th>Nome</th>
+                                            <th>Diciplina</th>
+                                            <th>sala</th>
+                                            <th>Periodo</th>
                                             <th class="nosort">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($gradeHorarios as $gradeHorario)
                                         <tr>
-                                            <td>{{ $gradeHorario->id }}</td>
+                                            <td>{{ $gradeHorario->nome}}</td>
+                                            <td>{{ $gradeHorario->disciplina }}</td>
                                             <td>{{ $gradeHorario->numero_sala }}</td>
-                                            <td>{{ $gradeHorario->tipo }}</td>
+                                            <td>{{ $gradeHorario->ano_letivo }}</td>
                                             <td>
-                                                <a href="{{ route('gradeHorarios.edit', $gradeHorario->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                                <a href="{{ route('gradeHorarios.edit', $gradeHorario->id) }}" class="btn btn-icon btn-primary"><i class="far fa-eye"></i></a>
                                                 @if(isset($gradeHorario->id))
                                                 <form action="{{ route('gradeHorarios.destroy', $gradeHorario->id) }}" method="POST" style="display: inline;">
                                                     @csrf
