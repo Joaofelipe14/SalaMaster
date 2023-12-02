@@ -80,10 +80,3 @@
             });
         });
     </script>
-    <!-- 
-    <form action="{{ route('professores.destroy', $professor->id) }}" method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                                    </form>
-                                                 -->

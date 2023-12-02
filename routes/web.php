@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\gradeHorariosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], functio
     Route::resource('periodos', PeriodoController::class);
     Route::resource('disciplinas', DisciplinaController::class);
     Route::resource('salas', SalaController::class);
+    Route::resource('gradeHorarios', gradeHorariosController::class);
+
 });
 
 // Rotas do Professor 
