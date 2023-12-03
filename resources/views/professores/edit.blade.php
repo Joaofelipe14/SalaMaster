@@ -54,6 +54,7 @@
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Atualizar</button>
+                                    <a class="btn btn-dark" href="{{ route('professores.index') }}">Voltar</a>
                                 </div>
                             </form>
 

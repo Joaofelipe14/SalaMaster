@@ -46,21 +46,6 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <label>Status</label>
-                                        <select class="form-control" id="status" name="status" required>
-                                            @if($periodo)
-                                                <option value="0" {{$periodo->status  == '0' ? 'selected' : '' }}>Não</option>
-                                                <option value="1" {{$periodo->status == '1' ? 'selected' : '' }}>Sim</option>
-                                
-                                            @else
-                                                <option value="0">Não</option>
-                                                <option value="1">Sim</option>
-                                    
-                                            @endif
-                                        </select>
-                                        
-                                    </div>
 
                                     <div class="form-group col-md-3">
                                         <label>Ano Letivo</label>
@@ -76,11 +61,27 @@
                                         <input type="date" class="form-control" id="data_fim" value="{{ $periodo->data_fim }}" name="data_fim" required>
                                     </div>
 
-
-
+                                    <div class="form-group col-md-2">
+                                        <label>Ativo</label>
+                                        <select class="form-control" id="status" name="status" required>
+                                            @if($periodo)
+                                                <option value="0" {{$periodo->status  == '0' ? 'selected' : '' }}>Não</option>
+                                                <option value="1" {{$periodo->status == '1' ? 'selected' : '' }}>Sim</option>
+                                
+                                            @else
+                                                <option value="0">Não</option>
+                                                <option value="1">Sim</option>
+                                    
+                                            @endif
+                                        </select>
+                                        
+                                    </div>
+                                
+                                </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Atualizar</button>
-                                </div>
+                                    <a class="btn btn-dark" href="{{ route('periodos.index') }}">Voltar</a>
+                                 </div>
                             </form>
 
                         </div>

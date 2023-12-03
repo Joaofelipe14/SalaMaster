@@ -45,13 +45,6 @@
                             <form action="{{ route('periodos.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
-                                <div class="form-group col-md-2">
-                                        <label>Status</label>
-                                        <select class="form-control" id="status" name="status" required>
-                                            <option value="0">Não</option>
-                                            <option value="1" selected>Sim</option>
-                                        </select>
-                                    </div>
 
                                     <div class="form-group col-md-3">
                                         <label>Ano Letivo</label>
@@ -66,10 +59,19 @@
                                         <label>Fim do Período</label>
                                         <input type="date" class="form-control" id="data_fim"  name="data_fim" required>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    <div class="form-group col-md-2">
+                                        <label>Ativo</label>
+                                        <select class="form-control" id="status" name="status" required>
+                                            <option value="0">Não</option>
+                                            <option value="1" selected>Sim</option>
+                                        </select>
                                     </div>
+                                    
                                 </div>
+                                <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                        <a class="btn btn-dark" href="{{ route('periodos.index') }}">Voltar</a>
+                                    </div>
                         </div>
                     </div>
                 </div>

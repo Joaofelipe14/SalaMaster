@@ -123,6 +123,7 @@
                                 </div>             
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    <a class="btn btn-dark" href="{{ route('gradeHorarios.index') }}">Voltar</a>
                                 </div>
                         </div>
                     </div>

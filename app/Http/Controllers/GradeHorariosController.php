@@ -114,7 +114,7 @@ class gradeHorariosController extends Controller
             DB::commit();
 
             // Retorna uma resposta JSON com a senha gerada
-            return redirect()->route('gradeHorarios.index')->with('successo', 'gradeHorarios criado.');
+            return redirect()->route('gradeHorarios.index')->with('successo', 'Grade Horária criada.');
         } catch (\Exception $e) {
             DB::rollBack();
 

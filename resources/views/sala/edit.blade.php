@@ -33,6 +33,7 @@
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Atualizar</button>
+                                    <a class="btn btn-dark" href="{{ route('salas.index') }}">Voltar</a>
                                 </div>
                             </form>
 

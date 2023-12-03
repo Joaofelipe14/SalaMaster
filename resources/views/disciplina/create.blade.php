@@ -30,9 +30,11 @@
                                             <option value="90">90 horas</option>
                                         </select>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                                    </div>
+                                   
+                                </div>
+                                <div class="card-footer">
+                                     <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    <a class="btn btn-dark" href="{{ route('disciplinas.index') }}">Voltar</a>
                                 </div>
                         </div>
                     </div>

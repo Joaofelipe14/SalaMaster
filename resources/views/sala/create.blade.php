@@ -48,15 +48,17 @@
                                         <input type="text" class="form-control" id="tipo" name="tipo" minlength="4" maxlength="30" required>
 
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                                    </div>
+                                
+                                </div>
+                                     <div class="card-footer">
+                                     <button type="submit" class="btn btn-primary">Adicionar</button>
+                                     <a class="btn btn-dark" href="{{ route('salas.index') }}">Voltar</a>
+                                     </div>
                                 </div>
                         </div>
-                    </div>
                 </div>
             </div>
-
+            
         </div>
     </section>
 </div>
