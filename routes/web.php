@@ -3,6 +3,7 @@
 use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\DocentesController;
 use App\Http\Controllers\gradeHorariosController;
+use App\Http\Controllers\GradeHorariosProfessorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
@@ -42,9 +43,11 @@ Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], functio
     Route::resource('salas', SalaController::class);
     Route::resource('gradeHorarios', gradeHorariosController::class);
 
+
     // Route::get('/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormDocente'])->name('enviar.mensagem.form');
     // Route::post('/enviar-mensagem', [MensagensSistemaController::class, 'enviarMensagemDocente'])->name('enviar.mensagem');
 });
+
 
 Route::get('/adm/listar-mensagem-recebidas', [MensagensSistemaController::class, 'listarMensagemAdmRecebidas'])->name('listarAdm.mensagem');
 
@@ -74,12 +77,16 @@ Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function (
     Route::get('/docentes/index/update-password', [LoginController::class, 'IndexUpdatePassword']);
     //  Route::get('homedocentes/home', [ProfessorController::class, 'HomeDocentes'])->name('docentes.home');
 
+
+    Route::get('/docentes/gradeHorariosDocente', [DocentesController::class, 'indexProfessorHorarios']);
+
+
+    Route::get('/docentes/gradeHorariosDocente/{id}', [DocentesController::class, 'ShowgradeHorariosDocente']);
+
+
     Route::get('editByid/{id}', [DocentesController::class, 'editById'])->name('editByid');
     Route::put('docentes/{professor}', [DocentesController::class, 'update'])->name('docentes.update');
     Route::get('/docentes/home', [DocentesController::class, 'indexHome']);
-
-
-
 });
 
 

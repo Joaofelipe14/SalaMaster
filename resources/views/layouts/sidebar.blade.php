@@ -69,6 +69,10 @@
                 <a href="{{ url('/docentes/home')}}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
             </li>
 
+
+            <li class="dropdown ">
+                <a href="{{ url('/docentes/gradeHorariosDocente') }}" class="nav-link"><i data-feather="clock"></i><span>Grades Horários</span></a>
+            </li>
             <li class="dropdown ">
                 <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
             </li>
