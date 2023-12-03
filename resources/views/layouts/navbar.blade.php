@@ -32,16 +32,16 @@
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
-                    Messages
+                    Mensagem
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="#">Marca com lida</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-message">
                     <!-- Seu cÃ³digo de mensagens aqui -->
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="#">Ver Todas <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>
@@ -51,16 +51,16 @@
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
-                    Notifications
+                    Notificações
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="#">Marca como Lida</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     <!-- Seu cÃ³digo de notificaÃ§Ãµes aqui -->
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="#">Ver todas <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>

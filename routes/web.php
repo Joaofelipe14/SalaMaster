@@ -9,6 +9,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\MensagensSistemaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,11 @@ Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function (
     Route::get('editByid/{id}', [DocentesController::class, 'editById'])->name('editByid');
     Route::put('docentes/{professor}', [DocentesController::class, 'update'])->name('docentes.update');
     Route::get('/docentes/home', [DocentesController::class, 'indexHome']);
+
+    Route::get('/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormDocente'])->name('enviar.mensagem.form');
+    Route::post('/enviar-mensagem', [MensagensSistemaController::class, 'enviarMensagemDocente'])->name('enviar.mensagem');
+    Route::get('/listar-mensagem/{idUsuario}', [MensagensSistemaController::class, 'listarMensagemDocente'])->name('listar.mensagem');
+
 });
 
 

@@ -71,7 +71,8 @@
             <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
             </li>
             <li class="dropdown ">
-            <a  class="nav-link"><i data-feather="mail"></i><span>Messagem</span></a>
+            <!-- <a  class="nav-link"><i data-feather="mail"></i><span>Messagem</span></a> -->
+            <a href="{{ url('listar-mensagem/' . $professorId)  }}" class="nav-link"><i data-feather="mail"></i><span>Caixa de mensagens</span></a>
             </li>
 
             @endif
