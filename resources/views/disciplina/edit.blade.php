@@ -21,7 +21,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nome" value="{{ $disciplina->nome }}" name="nome" required>
+                                        <input type="text" class="form-control" id="nome" value="{{ $disciplina->nome }}" name="nome"  maxlength="60" required>
                                     </div>
 
                                     <div class="form-group col-md-4">

@@ -69,10 +69,10 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Status</th>
                                             <th>Ano Letivo</th>
                                             <th>Data Início</th>
                                             <th>Data Fim</th>
+                                            <th>Status</th>
                                             <th class="nosort">Ações</th>
                                         </tr>
                                     </thead>
@@ -80,10 +80,18 @@
                                         @foreach($periodos as $periodo)
                                         <tr>
                                             <td>{{ $periodo->id }}</td>
-                                            <td>{{ $periodo->status }}</td>
                                             <td>{{ $periodo->ano_letivo }}</td>
-                                            <td>{{ $periodo->data_inicio }}</td>
-                                            <td>{{ $periodo->data_fim }}</td>
+                                            <td>{{date('d/m/Y',  strtotime( $periodo->data_inicio))}}</td>
+                                            <td>{{date('d/m/Y',  strtotime( $periodo->data_fim)) }}</td>
+
+                                            <td>
+                                                    @if(isset($periodo->status)  && $periodo->status == 1)
+                                                    <span class="badge badge-success">Ativo</span>
+                                                    @else
+                                                    <span class="badge badge-danger">Inativo</span>
+                                                    @endif
+                                                </td>
+                                        
                                             <td>
                                                 <a href="{{ route('periodos.edit', $periodo->id) }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                                 @if(isset($periodo->id))
@@ -94,6 +102,7 @@
                                                 </form>
                                                 @endif
                                             </td>
+                                            
                                         </tr>
                                         @endforeach
 

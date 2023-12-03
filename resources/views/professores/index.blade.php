@@ -45,7 +45,7 @@
                                                     @if(isset($professor->usuario) && isset($professor->usuario->status) && $professor->usuario->status == 1)
                                                     <span class="badge badge-success">Ativo</span>
                                                     @else
-                                                    <span class="badge badge-danger">Desativo</span>
+                                                    <span class="badge badge-danger">Inativo</span>
                                                     @endif
                                                 </td>
                                                 <td>

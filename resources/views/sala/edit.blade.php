@@ -20,13 +20,13 @@
                                 @method('PUT')
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label>Numero sala</label>
-                                        <input type="text" class="form-control" id="numero_sala" value="{{$sala->numero_sala}}" name="numero_sala" required>
+                                        <label>Nome sala</label>
+                                        <input type="text" class="form-control" id="numero_sala" value="{{$sala->numero_sala}}" name="numero_sala"  maxlength="30" required>
                                     </div>
 
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="tipo" class="form-label">Tipo </label>
-                                        <input type="text" class="form-control" id="tipo"  value="{{$sala->tipo}}"name="tipo" required>
+                                        <input type="text" class="form-control" id="tipo"  value="{{$sala->tipo}}"name="tipo" minlength="4" maxlength="30" required>
 
                                     </div>
                                 </div>

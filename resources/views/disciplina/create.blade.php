@@ -19,7 +19,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" minlength="4" maxlength="30"required>
+                                        <input type="text" class="form-control" id="nome" name="nome" minlength="4" maxlength="50"required>
                                     </div>
 
                                     <div class="form-group col-md-2">

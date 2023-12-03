@@ -63,7 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Numero sala</th>
+                                            <th>Nome sala</th>
                                             <th>Tipo</th>
                                             <th class="nosort">Ações</th>
                                         </tr>
