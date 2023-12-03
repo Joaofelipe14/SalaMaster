@@ -1,7 +1,7 @@
 @include('welcome')
     <!-- Main Content -->
 
-    <div class="main-content">
+<div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div>
@@ -16,11 +16,22 @@
                         </div>
                     </div>
                     @endif
+                    @if($mensagem = session('erro'))
+                    <div class="alert alert-danger alert-dismissible alert-has-icon">
+                        <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="alert-body">
+                            <div class="alert-title">{{ $mensagem }}</div>
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-block">
-                                <h4>Mensagens enviadas</h4>
-                                <a class="btn btn-primary float-right" href="{{ route('enviar.mensagem') }}">Enviar Mensagem</a>
+                                <h4>Mensagens Recebidas</h4>
+                                <a class="btn btn-primary float-right" href="{{ route('enviarAdm.mensagem.form') }}">Enviar Mensagem</a>
 
                             </div>
                             <div class="card-body">
@@ -30,7 +41,11 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Conteudo</th>
-                                                <th>lida</th>
+                                                <th>Remetente</th>
+                                                <th>hora</th>
+                                                <th>Responder</th>
+
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -38,7 +53,11 @@
                                             <tr>
                                                 <td>{{ $Mensagem->id }}</td>
                                                 <td>{{ $Mensagem->conteudo }}</td>
-                                                <td>{{ $Mensagem->lida }}</td>
+                                                <td>{{ $Mensagem->nome }}</td>
+                                                <td>{{ $Mensagem->created_at }}</td>
+                                               
+                                                <td>
+                                                <a  disabled href="{{ url('responder/' .  Crypt::encrypt($Mensagem->id))  }}"  class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -55,8 +74,11 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('#tabelaProfessores').DataTable();
-            $('#tabelaProfessores_filter').css({
+     $('#tabelaProfessores').DataTable({
+            "order": [
+                [0, 'desc']
+            ] 
+        });            $('#tabelaProfessores_filter').css({
                 'display': 'flex',
                 'justify-content': 'flex-end'
             });

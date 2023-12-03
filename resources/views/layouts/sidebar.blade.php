@@ -50,13 +50,15 @@
             </li>
 
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Configurações</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Caixa de mensagens</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ url('restrita/sistema') }}">Sistema</a></li>
-                    <li><a class="nav-link" href="{{ url('restrita/sistema/correios') }}">Correios</a></li>
-                    <li><a class="nav-link" href="{{ url('restrita/sistema/pagseguro') }}">Pagseguro</a></li>
+                    <li><a href="{{ url('adm/listar-mensagem-recebidas')  }}" class="nav-link">Recebidas</a></li>
+                    <li><a class="nav-link" href="{{ url('adm/listar-mensagem-enviadas') }}">Enviadas</a></li>
+
                 </ul>
             </li>
+
+
             <!-- Fim da Logica para o Adminstrador -->
             @else
             <!-- Logica para o Professor Adicione aqui o código específico para professores -->
@@ -64,17 +66,22 @@
             $professorId = session('professorId'); // Obtém o valor de 'professorId' da sessão
             @endphp
             <li class="dropdown">
-                <a  href="{{ url('/docentes/home')}}"class="nav-link"><i data-feather="home"></i><span>Home</span></a>
+                <a href="{{ url('/docentes/home')}}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
             </li>
 
             <li class="dropdown ">
-            <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
+                <a href="{{ url('editByid/' . $professorId) }}" class="nav-link"><i data-feather="user"></i><span>Dados Pessoais</span></a>
             </li>
-            <li class="dropdown ">
-            <!-- <a  class="nav-link"><i data-feather="mail"></i><span>Messagem</span></a> -->
-            <a href="{{ url('listar-mensagem/' . $professorId)  }}" class="nav-link"><i data-feather="mail"></i><span>Caixa de mensagens</span></a>
-            </li>
+     
 
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Caixa de mensagens</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('listar-mensagem-recebidas')  }}" class="nav-link">Recebidas</a></li>
+                    <li><a class="nav-link" href="{{  url('listar-mensagem-enviadas')  }}">Enviadas</a></li>
+
+                </ul>
+            </li>
             @endif
 
             <!-- Fim da Logica para o Professor -->

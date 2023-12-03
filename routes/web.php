@@ -41,7 +41,32 @@ Route::group(['middleware' => ['check.jwt.token', 'checkAdminstrador']], functio
     Route::resource('disciplinas', DisciplinaController::class);
     Route::resource('salas', SalaController::class);
     Route::resource('gradeHorarios', gradeHorariosController::class);
+
+    // Route::get('/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormDocente'])->name('enviar.mensagem.form');
+    // Route::post('/enviar-mensagem', [MensagensSistemaController::class, 'enviarMensagemDocente'])->name('enviar.mensagem');
 });
+
+Route::get('/adm/listar-mensagem-recebidas', [MensagensSistemaController::class, 'listarMensagemAdmRecebidas'])->name('listarAdm.mensagem');
+
+Route::get('/adm/listar-mensagem-enviadas', [MensagensSistemaController::class, 'listarMensagemAdmEnviadas'])->name('listarAdm.mensagem');
+// Route::get('/adm/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormAdmin'])->name('enviar.mensagem.form');
+
+Route::get('/enviar-mensagemAdmin', [MensagensSistemaController::class, 'criarMensagemFormAdm'])->name('enviarAdm.mensagem.form');
+Route::post('/enviar-mensagemAdmin', [MensagensSistemaController::class, 'enviarMensagemAdmin'])->name('enviarAdm.mensagem');
+
+Route::get('/responder/{id}', [MensagensSistemaController::class, 'responderAdmin'])->name('responder.mensagem');
+
+
+Route::get('/responder/docente/{idmensagem}', [MensagensSistemaController::class, 'responderDocente'])->name('responder.docente.mensagem');
+
+
+// ------------------------------------------------------------------------------------------------------------------------
+Route::get('/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormDocente'])->name('enviar.mensagem.form');
+Route::post('/enviar-mensagem', [MensagensSistemaController::class, 'enviarMensagemDocente'])->name('enviar.mensagem');
+Route::get('/listar-mensagem-recebidas', [MensagensSistemaController::class, 'listarMensagemDocenteRecebidas'])->name('listar.mensagem');
+
+Route::get('/listar-mensagem-enviadas', [MensagensSistemaController::class, 'listarMensagemDocenteEnviadas'])->name('listar.mensagem');
+
 
 // Rotas do Professor 
 Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function () {
@@ -53,9 +78,7 @@ Route::group(['middleware' => ['check.jwt.token', 'checkProfessor']], function (
     Route::put('docentes/{professor}', [DocentesController::class, 'update'])->name('docentes.update');
     Route::get('/docentes/home', [DocentesController::class, 'indexHome']);
 
-    Route::get('/enviar-mensagem', [MensagensSistemaController::class, 'criarMensagemFormDocente'])->name('enviar.mensagem.form');
-    Route::post('/enviar-mensagem', [MensagensSistemaController::class, 'enviarMensagemDocente'])->name('enviar.mensagem');
-    Route::get('/listar-mensagem/{idUsuario}', [MensagensSistemaController::class, 'listarMensagemDocente'])->name('listar.mensagem');
+
 
 });
 
