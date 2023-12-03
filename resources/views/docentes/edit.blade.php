@@ -1,5 +1,7 @@
 <!-- resources/views/professores/edit.blade.php -->
 @include('welcome')
+
+
 <script src="{{ asset('mask/jquery.mask.min.js') }}"></script>
 <div class="main-content">
     <section class="section">
@@ -11,7 +13,11 @@
                             <h4>Editar Professor</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('professores.update', $professor->id) }}" method="POST">
+                        <!-- {{-- Printa todas as variáveis de sessão --}}
+                @foreach(session()->all() as $key => $value)
+                <div>{{ $key }}: {{ is_string($value) ? htmlspecialchars($value) : json_encode($value) }}</div>
+                @endforeach -->
+                            <form action="{{ route('docentes.update', $professor->id) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row">
@@ -54,7 +60,6 @@
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Atualizar</button>
-                                    <a class="btn btn-dark" href="{{ route('professores.index') }}">Voltar</a>
                                 </div>
                             </form>
 

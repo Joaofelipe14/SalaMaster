@@ -25,42 +25,95 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
+        @if(session('tipousuario') === 'admin')
+
         <li class="dropdown dropdown-list-toggle">
             <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle">
                 <i data-feather="mail"></i>
-                <span class="badge headerBadge1">6</span>
+                <span class="badge headerBadge1">{{ count($mensagensNavBadAdmin) }}</span>
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
-                    Messages
+                    Mensagem
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="#">Marca como lida</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-message">
-                    <!-- Seu cÃ³digo de mensagens aqui -->
+                    @foreach ($mensagensNavBadAdmin as $mensagem)
+                    <div class="dropdown-item">
+                        <a href="{{ url('responder/' .  Crypt::encrypt($mensagem->id))  }}">
+                            <p>Remetente: {{ $mensagem->nome }}</p>
+                            <p>Conteúdo: {{ $mensagem->conteudo }}</p>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ url('adm/listar-mensagem-recebidas')  }}">Ver Todas <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>
+
+        @else
+
+        @php
+        $idProfessor = session('professorId');
+        $professor = \App\Models\Professores::where('id', $idProfessor)->first();
+
+        // Obtém todos os administradores para exibir no formulário
+        $mensagensNavBadProfessores = \DB::table('mensagens')
+        ->select('mensagens.*', 'a.nome')
+        ->join('administradores as a', 'mensagens.remetente_id', '=', 'a.idUsuario')
+        ->where('destinatario_id', '=', $professor->idUsuario)
+        ->where('mensagens.lida', '=', 0)
+        ->orderBy('mensagens.id', 'desc')
+        ->get();
+        @endphp
+        <li class="dropdown dropdown-list-toggle">
+            <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle">
+                <i data-feather="mail"></i>
+                <span class="badge headerBadge1">{{ count($mensagensNavBadProfessores) }}</span>
+            </a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+                <div class="dropdown-header">
+                    Mensagem
+                    <div class="float-right">
+                        <a href="#">Marca como lida</a>
+                    </div>
+                </div>
+                <div class="dropdown-list-content dropdown-list-message">
+                    @foreach ($mensagensNavBadProfessores as $mensagem)
+                    <div class="dropdown-item">
+                        <a href="{{ url('responder/' .  Crypt::encrypt($mensagem->id))  }}">
+                            <p>Remetente: {{ $mensagem->nome }}</p>
+                            <p>Conteúdo: {{ $mensagem->conteudo }}</p>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="dropdown-footer text-center">
+                    <a href="{{ url('adm/listar-mensagem-recebidas')  }}">Ver Todas <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </li>
+        @endif
         <li class="dropdown dropdown-list-toggle">
             <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
                 <i data-feather="bell" class="bell"></i>
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
-                    Notifications
+                    Notificações
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="#">Marca como Lida</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     <!-- Seu cÃ³digo de notificaÃ§Ãµes aqui -->
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="#">Ver todas <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>

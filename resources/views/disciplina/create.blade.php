@@ -19,7 +19,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" minlength="4" maxlength="30"required>
+                                        <input type="text" class="form-control" id="nome" name="nome" minlength="4" maxlength="50"required>
                                     </div>
 
                                     <div class="form-group col-md-2">
@@ -30,9 +30,11 @@
                                             <option value="90">90 horas</option>
                                         </select>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                                    </div>
+                                   
+                                </div>
+                                <div class="card-footer">
+                                     <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    <a class="btn btn-dark" href="{{ route('disciplinas.index') }}">Voltar</a>
                                 </div>
                         </div>
                     </div>

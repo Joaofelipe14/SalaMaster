@@ -16,6 +16,10 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function IndexUpdatePassword()
+    {
+        return view('docentes.changepassword');
+    }
     public function login(Request $request)
     {
 
@@ -44,13 +48,16 @@ class LoginController extends Controller
                     return redirect()->intended('/professores');
                 } elseif ($user->tipousuario == 2) {
                     $request->session()->put('tipousuario', 'professor');
-                    echo '<pre>';
+                    $professorId =  $user->professor->id;
+
+                    $request->session()->put('professorId', $professorId );
+
 
                     if ($user->professor->primeiroAcesso == 'N') {
-                        $professorId =  $user->professor->id;
-                        return view('docentes.changepassword', compact('professorId'));
+                        return redirect('/docentes/index/update-password');
+
                     } else {
-                        return view('docentes.home');
+                        return redirect('/docentes/home')->with('successo', 'Seja bem vindo');
                     }
                 }
             }

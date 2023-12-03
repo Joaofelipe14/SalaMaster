@@ -44,7 +44,7 @@ class DisciplinaController extends Controller
             ]);
 
 
-            return redirect()->route('disciplinas.index')->with('successo', 'Disciplinas ' . $disciplinas->nome . ' cadastrado com sucesso!');
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplina ' . $disciplinas->nome . ' cadastrado com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao cadastrar Disciplina: ' . $e->getMessage()]);
         }
@@ -89,7 +89,7 @@ class DisciplinaController extends Controller
                 'carga_horaria' => $request->carga_horaria,
                 'updated_at' => now(), // Defina manualmente a data de atualização
             ]);
-            return redirect()->route('disciplinas.index')->with('successo', 'Disciplinas ' . $disciplinas . ' atualizado com sucesso!');
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplina ' . $disciplinas->nome . ' atualizada com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar disciplina: ' . $e->getMessage()]);
         }
@@ -103,7 +103,7 @@ class DisciplinaController extends Controller
         try {
             $disciplinas = Disciplinas::findOrFail($id);
             $disciplinas->delete();
-            return redirect()->route('disciplinas.index')->with('successo', 'Disciplina excluído com sucesso!');
+            return redirect()->route('disciplinas.index')->with('successo', 'Disciplina excluída com sucesso!');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao excluir período: ' . $e->getMessage()]);
         }

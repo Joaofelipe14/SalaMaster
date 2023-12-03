@@ -14,7 +14,7 @@ class Usuarios extends Authenticatable implements JWTSubject
 
     protected $table = 'usuarios';
 
-    protected $fillable = ['senha', 'email', 'status','tipousuario'];
+    protected $fillable = ['senha', 'email', 'status', 'tipousuario'];
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
@@ -31,6 +31,11 @@ class Usuarios extends Authenticatable implements JWTSubject
     {
         // Relacionamento de muitos para um  com a tabela professores
         return $this->hasOne(Professores::class, 'idUsuario');
+    }
+    public function administradores()
+    {
+        // Relacionamento de muitos para um  com a tabela professores
+        return $this->hasOne(Administrador::class, 'idUsuario');
     }
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.

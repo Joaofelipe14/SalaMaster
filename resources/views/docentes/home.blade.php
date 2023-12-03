@@ -1,4 +1,4 @@
-@include('welcome')
+@include('.welcome')
 
 
 <!-- Main Content -->
@@ -14,6 +14,18 @@
 
                 {{-- Exibe a mensagem de sucesso --}}
                 @if($mensagem = session('successo'))
+                    <div class="alert alert-success alert-dismissible alert-has-icon">
+                        <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="alert-body">
+                            <div class="alert-title">{{ $mensagem }}</div>
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+                {{-- Exibe a mensagem de erro --}}
+                @if($mensagem = session('erro'))
                     <div class="alert alert-success alert-dismissible alert-has-icon">
                         <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
                         <div class="alert-body">

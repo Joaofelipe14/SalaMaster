@@ -85,7 +85,7 @@ class SalaController extends Controller
             ]);
 
 
-            return redirect()->route('salas.index')->with('successo', 'Sala Atualizasda');
+            return redirect()->route('salas.index')->with('successo', 'Sala Atualizada');
 
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao atualizar disciplina: ' . $e->getMessage()]);
@@ -100,7 +100,7 @@ class SalaController extends Controller
         try {
             $sala =Salas::findOrFail($id);
             $sala->delete();
-            return redirect()->route('salas.index')->with('successo', 'Sala excluído com sucesso');
+            return redirect()->route('salas.index')->with('successo', 'Sala excluída com sucesso');
 
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Erro ao excluir período: ' . $e->getMessage()]);

@@ -29,7 +29,7 @@
     <!-- resources/views/professores/create.blade.php -->
 
 @include('welcome')
-
+<script src="{{ asset('mask/jquery.mask.min.js') }}"></script>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -38,35 +38,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Cadastrar Peridos</h4>
+                            <h4>Cadastrar Período</h4>
                         </div>
                         <div class="card-body">
 
                             <form action="{{ route('periodos.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
-                                <div class="form-group col-md-6">
-                                        <label>Status</label>
-                                        <input type="text" class="form-control" id="status"  name="status" required>
-                                    </div>
 
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                         <label>Ano Letivo</label>
-                                        <input type="text" class="form-control" id="ano_letivo"  name="ano_letivo" required>
+                                        <input type="text" class="form-control" id="ano_letivo"  name="ano_letivo"  maxlength="7" required>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Carga Horaria</label>
+                                    <div class="form-group col-md-3">
+                                        <label>Início do Período</label>
                                         <input type="date" class="form-control" id="data_inicio"  name="data_inicio" required>
                                     </div>
 
-                                    <div class="form-group col-md-4">
-                                        <label>Carga Horaria</label>
+                                    <div class="form-group col-md-3">
+                                        <label>Fim do Período</label>
                                         <input type="date" class="form-control" id="data_fim"  name="data_fim" required>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    <div class="form-group col-md-2">
+                                        <label>Ativo</label>
+                                        <select class="form-control" id="status" name="status" required>
+                                            <option value="0">Não</option>
+                                            <option value="1" selected>Sim</option>
+                                        </select>
                                     </div>
+                                    
                                 </div>
+                                <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                        <a class="btn btn-dark" href="{{ route('periodos.index') }}">Voltar</a>
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -75,3 +80,4 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">$("#ano_letivo").mask("9999.9");</script>
