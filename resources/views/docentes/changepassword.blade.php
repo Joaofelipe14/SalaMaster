@@ -56,7 +56,7 @@
 
                     <div class="card-header">
                         <h4>Atualizar senha
-                            <img class="logo" src="/img/logo.png" width="50%">
+                            <img class="logo" src="/img/logo3.png" width="100%">
                         </h4>
                     </div>
 

@@ -58,7 +58,7 @@ class ProfessorController extends Controller
                 'endereco' => $request->input('endereco'),
                 'contato' => $request->input('contato'),
                 'email' => $request->input('email'),
-                'cpf' =>   $cpf,
+                'cpf' =>   $request->input('cpf'),
                 'idUsuario' => $usuario->id,
                 'primeiroAcesso' => 'N',
 
@@ -139,7 +139,7 @@ class ProfessorController extends Controller
             return redirect()->route('professores.index')->with('successo', 'Professor excluído com sucesso.');
         } catch (\Exception $e) {
             // Se houver erros, redirecione com uma mensagem de erro
-            return redirect()->back()->with('error', 'Erro ao excluir professor: ' . $e->getMessage());
+            return redirect()->route('professores.index')->with('erro', 'Erro ao excluir professor: há vinculos Ativos');
         }
     }
 
