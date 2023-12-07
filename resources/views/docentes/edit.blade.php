@@ -28,7 +28,7 @@
 
                                     <div class="form-group col-md-4">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" id="email" value="{{ $professor->email }}" name="email" required>
+                                        <input disabled type="email" class="form-control" value="{{ $professor->email }}"required>
                                     </div>
 
                                     <div class="form-group col-md-2">
@@ -42,20 +42,9 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>CPF</label>
-                                        <input type="cpf" class="form-control" id="cpf" name="cpf" value="{{ $professor->cpf }}" pattern="^(\d{3}\.?\d{3}\.?\d{3}-?\d{2})$" required>
+                                        <input  disabled ="cpf" class="form-control" id="cpf"value="{{ $professor->cpf }}" pattern="^(\d{3}\.?\d{3}\.?\d{3}-?\d{2})$" required>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputState">Ativo</label>
-                                        <select id="inputState" class="form-control" id="status" name="status" required>
-                                            @if($professor)
-                                                <option value="1" {{$professor->usuario->status == 1 ? 'selected' : '' }}>Sim</option>
-                                                <option value="0" {{$professor->usuario->status == 0 ? 'selected' : '' }}>Não</option>
-                                            @else
-                                                <option value="1">Sim</option>
-                                                <option value="0">Não</option>
-                                            @endif
-                                        </select>
-                                    </div>
+                                   
                                 </div>
 
                                 <div class="card-footer">

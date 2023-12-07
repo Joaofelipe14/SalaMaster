@@ -70,9 +70,10 @@ class ProfessorController extends Controller
             return redirect()->route('professores.index')->with('successo', 'Usuario criado.');
         } catch (\Exception $e) {
             DB::rollBack();
+            
 
             // Retorna uma resposta JSON com a mensagem de erro
-            return response()->json(['success' => false, 'message' => 'Erro ao cadastrar professor: ' . $e->getMessage()]);
+            return redirect()->route('professores.index')->with('erro','Erro ao fazer cadastro, esse usuario já existe!');
         }
     }
 

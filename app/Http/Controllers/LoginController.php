@@ -49,8 +49,12 @@ class LoginController extends Controller
                 } elseif ($user->tipousuario == 2) {
                     $request->session()->put('tipousuario', 'professor');
                     $professorId =  $user->professor->id;
+                    $Professornome =  $user->professor->nome;
+
 
                     $request->session()->put('professorId', $professorId );
+                    $request->session()->put('Professornome', $Professornome );
+
 
 
                     if ($user->professor->primeiroAcesso == 'N') {

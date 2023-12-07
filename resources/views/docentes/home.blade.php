@@ -7,10 +7,10 @@
     <section class="section">
         <div class="section-body">
             <div>
-                {{-- Printa todas as variáveis de sessão --}}
+                <!-- {{-- Printa todas as variáveis de sessão --}}
                 @foreach(session()->all() as $key => $value)
                 <div>{{ $key }}: {{ is_string($value) ? htmlspecialchars($value) : json_encode($value) }}</div>
-                @endforeach
+                @endforeach -->
 
                 {{-- Exibe a mensagem de sucesso --}}
                 @if($mensagem = session('successo'))

@@ -35,9 +35,7 @@
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
                     Mensagem
-                    <div class="float-right">
-                        <a href="#">Marca como lida</a>
-                    </div>
+                 
                 </div>
                 <div class="dropdown-list-content dropdown-list-message">
                     @foreach ($mensagensNavBadAdmin as $mensagem)
@@ -75,12 +73,10 @@
                 <i data-feather="mail"></i>
                 <span class="badge headerBadge1">{{ count($mensagensNavBadProfessores) }}</span>
             </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown "  style="width:500px">
                 <div class="dropdown-header">
                     Mensagem
-                    <div class="float-right">
-                        <a href="#">Marca como lida</a>
-                    </div>
+    
                 </div>
                 <div class="dropdown-list-content dropdown-list-message">
                     @foreach ($mensagensNavBadProfessores as $mensagem)
@@ -105,9 +101,7 @@
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
                     Notificações
-                    <div class="float-right">
-                        <a href="#">Marca como Lida</a>
-                    </div>
+                 
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     <!-- Seu cÃ³digo de notificaÃ§Ãµes aqui -->
@@ -123,12 +117,13 @@
                 <span class="d-sm-none d-lg-inline-block"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Hello Sarah Smith</div>
-                <a href="profile.html" class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile</a>
-                <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i> Activities</a>
-                <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i> Settings</a>
+                    @php
+                    $Professornome = session('Professornome'); // Obtém o valor de 'professorId' da sessão
+                    @endphp
+                <div class="dropdown-title">Oi, {{  $Professornome}}</div>
+             
                 <div class="dropdown-divider"></div>
-                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i> Sair</a>
             </div>
         </li>
     </ul>
