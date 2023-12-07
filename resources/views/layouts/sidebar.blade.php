@@ -13,7 +13,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ url('restrita') }}">
+            <a href="{{ url('professores') }}">
                 <img alt="image" src="{{ asset('img/logo.png') }}" class="header-logo" />
                 <span class="logo-name">SalaMaster</span>
             </a>
@@ -26,7 +26,7 @@
             @if(session('tipousuario') === 'admin')
 
             <li class="dropdown">
-                <a href="{{ url('restrita') }}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
+                <a href="{{ url('professores') }}" class="nav-link"><i data-feather="home"></i><span>Home</span></a>
             </li>
 
             <li class="dropdown ">
