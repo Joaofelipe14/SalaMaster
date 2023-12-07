@@ -29,7 +29,7 @@
                                         <tr>
                                             <th>Nome</th>
                                             <th>Diciplina</th>
-                                            <th>sala</th>
+                                            <th>Sala</th>
                                             <th>Periodo</th>
                                             <th class="nosort">Ações</th>
                                         </tr>

@@ -65,7 +65,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="senha_atual">Senha atual:</label>
-                                <input type="senha_atual" class="form-control" name="senha_atual" tabindex="1" required autofocus>
+                                <input type="password" class="form-control" name="senha_atual" tabindex="1" required autofocus>
                                 <div class="invalid-feedback">
                                     Digite sua senha atual
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="d-block">
                                     <label for="nova_senha" class="control-label">Nova Senha:</label>
                                 </div>
-                                <input id="nova_senha" type="nova_senha" class="form-control" name="nova_senha" tabindex="2" required>
+                                <input id="nova_senha" type="password" class="form-control" name="nova_senha" tabindex="2" required>
                                 <div class="invalid-feedback">
                                     Digite nova senha
                                 </div>
@@ -84,7 +84,7 @@
                                     <div class="d-block">
                                         <label for="confirmar_senha" class="control-label">Confirma nova Senha:</label>
                                     </div>
-                                    <input id="confirmar_senha" type="confirmar_senha" class="form-control" name="confirmar_senha" tabindex="2" required>
+                                    <input id="confirmar_senha" type="password" class="form-control" name="confirmar_senha" tabindex="2" required>
                                     <div class="invalid-feedback">
                                         Senhas nao saõ iguais.
                                     </div>

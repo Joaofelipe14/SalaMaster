@@ -42,7 +42,7 @@
                                             <th>#</th>
                                             <th>Conteudo</th>
                                             <th>Remetente</th>
-                                            <th>hora</th>
+                                            <th>Data e Hora</th>
                                             <th>Responder</th>
 
 
@@ -54,7 +54,7 @@
                                             <td>{{ $Mensagem->id }}</td>
                                             <td>{{ $Mensagem->conteudo }}</td>
                                             <td>{{ $Mensagem->nome }}</td>
-                                            <td>{{ $Mensagem->created_at }}</td>
+                                            <td>{{ date('d/m/Y H:i',  strtotime( $Mensagem->created_at)) }}</td>
 
                                             <td>
                                                 <a disabled href="{{ url('responder/docente/' . Crypt::encrypt($Mensagem->id))  }}" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>

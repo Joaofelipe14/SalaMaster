@@ -42,7 +42,7 @@
                                             <th>desinatario</th>
                                             <th>lida</th>
 
-                                            <th>hora</th>
+                                            <th>Data e Hora</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,7 +58,8 @@
                                                 <span class="badge badge-success">lida</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $Mensagem->created_at }}</td>
+                                    
+                                            <td>{{ date('d/m/Y H:i',  strtotime( $Mensagem->created_at)) }}</td>
 
                                         </tr>
                                         @endforeach
