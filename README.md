@@ -49,3 +49,18 @@ Este é um projeto Laravel para gestão acadêmica, com funcionalidades básicas
 - O comando `php artisan serve` iniciará o servidor em `http://localhost:8000` por padrão.
 
 Sinta-se à vontade para expandir este projeto conforme necessário para atender aos requisitos específicos do seu aplicativo.
+
+
+###Telas 
+
+![Tela de login do sistema](https://raw.githubusercontent.com/Joaofelipe14/SalaMaster/refs/heads/main/public/preview/login.png)
+_Tela de login_
+
+![Tela de login do sistema](https://raw.githubusercontent.com/Joaofelipe14/SalaMaster/refs/heads/main/public/preview/lista_mensagens.png)
+_Tela de listar mensagens_
+
+![Tela de login do sistema](https://raw.githubusercontent.com/Joaofelipe14/SalaMaster/refs/heads/main/public/preview/tela_criar_professor.png)
+_Tela de criar professor_
+
+![Tela de login do sistema](https://raw.githubusercontent.com/Joaofelipe14/SalaMaster/refs/heads/main/public/preview/tela_horarios.png)
+_Tela de horarios_
